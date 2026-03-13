@@ -4,22 +4,6 @@ import { loadFragment } from '../fragment/fragment.js';
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
 
-/**
- * Wraps search icon in a container that allows Algolia autocomplete.
- */
-function attachAlgoliaSearch() {
-  const searchContainer = document.createElement('div');
-  searchContainer.setAttribute('id', 'autocomplete');
-
-  const searchIcon = document.querySelector('.icon.icon-search');
-
-  if (searchIcon) {
-    const currentIconParent = searchIcon.parentNode;
-    searchContainer.appendChild(searchIcon);
-    currentIconParent.append(searchContainer);
-  }
-}
-
 function closeOnEscape(e) {
   if (e.code === 'Escape') {
     const nav = document.getElementById('nav');
@@ -179,5 +163,4 @@ export default async function decorate(block) {
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
   block.append(navWrapper);
-  attachAlgoliaSearch();
 }

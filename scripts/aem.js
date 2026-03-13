@@ -633,6 +633,22 @@ function decorateBlocks(main) {
 }
 
 /**
+ * Wraps search icon in a container that allows Algolia autocomplete.
+ */
+function attachAlgoliaSearch() {
+  const searchContainer = document.createElement('div');
+  searchContainer.setAttribute('id', 'autocomplete');
+
+  const searchIcon = document.querySelector('.icon.icon-search');
+
+  if (searchIcon) {
+    const currentIconParent = searchIcon.parentNode;
+    searchContainer.appendChild(searchIcon);
+    currentIconParent.append(searchContainer);
+  }
+}
+
+/**
  * Loads a block named 'header' into header
  * @param {Element} header header element
  * @returns {Promise}
@@ -641,6 +657,7 @@ async function loadHeader(header) {
   const headerBlock = buildBlock('header', '');
   header.append(headerBlock);
   decorateBlock(headerBlock);
+  attachAlgoliaSearch();
   return loadBlock(headerBlock);
 }
 
