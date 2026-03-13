@@ -115,14 +115,14 @@ function loadAlgoliaScripts() {
   script1.defer = true;
   script1.nonce = 'aem';
 
-  document.appendChild(script1);
+  document.body.appendChild(script1);
 
   const script2 = document.createElement('script');
   script2.src = '/scripts/autocomplete-init.js';
   script2.defer = true;
   script2.nonce = 'aem';
 
-  document.appendChild(script2);
+  document.body.appendChild(script2);
 }
 
 /**
