@@ -110,11 +110,29 @@ async function loadEager(doc) {
 }
 
 /**
+ * Wraps search icon in a container that allows Algolia autocomplete.
+ */
+function attachAlgoliaSearch() {
+  const searchContainer = document.createElement('div');
+  searchContainer.setAttribute('id', 'autocomplete');
+
+  const searchIcon = document.querySelector('.icon.icon-search');
+
+  if (searchIcon) {
+    const currentIconParent = searchIcon.parentNode;
+    searchContainer.appendChild(searchIcon);
+    currentIconParent.append(searchContainer);
+  }
+}
+
+/**
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element
  */
 async function loadLazy(doc) {
-  loadHeader(doc.querySelector('header'));
+  loadHeader(doc.querySelector('header')).then(() => {
+    attachAlgoliaSearch();
+  });
 
   const main = doc.querySelector('main');
   await loadSections(main);
