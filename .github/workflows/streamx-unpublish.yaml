@@ -1,4 +1,4 @@
-name: StreamX EDS Publish Sync
+name: StreamX EDS Unpublish Sync
 
 on:
   repository_dispatch:
