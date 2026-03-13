@@ -109,6 +109,22 @@ async function loadEager(doc) {
   }
 }
 
+function loadAlgoliaScripts() {
+  const script1 = document.createElement('script');
+  script1.src = '/scripts/autocomplete-js.js';
+  script1.defer = true;
+  script1.nonce = 'aem';
+
+  document.appendChild(script1);
+
+  const script2 = document.createElement('script');
+  script2.src = '/scripts/autocomplete-init.js';
+  script2.defer = true;
+  script2.nonce = 'aem';
+
+  document.appendChild(script2);
+}
+
 /**
  * Wraps search icon in a container that allows Algolia autocomplete.
  */
@@ -120,7 +136,7 @@ function attachAlgoliaSearch() {
 
   if (searchIcon) {
     const currentIconParent = searchIcon.parentNode;
-    searchContainer.appendChild(searchIcon);
+    currentIconParent.removeChild(searchIcon);
     currentIconParent.append(searchContainer);
   }
 }
@@ -130,9 +146,7 @@ function attachAlgoliaSearch() {
  * @param {Element} doc The container element
  */
 async function loadLazy(doc) {
-  loadHeader(doc.querySelector('header')).then(() => {
-    attachAlgoliaSearch();
-  });
+  await loadHeader(doc.querySelector('header'));
 
   const main = doc.querySelector('main');
   await loadSections(main);
@@ -145,6 +159,9 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
+
+  loadAlgoliaScripts();
+  attachAlgoliaSearch();
 }
 
 /**
