@@ -274,3 +274,13 @@ header nav .nav-tools {
 header #autocomplete {
     width: 10rem;
 }
+
+/* stylelint-disable-next-line */
+header .aa-DetachedCancelButton {
+    width: 10rem;
+}
+
+/* stylelint-disable-next-line */
+header .icon.icon-search {
+    display: none;
+}
