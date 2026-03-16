@@ -280,6 +280,7 @@ header #autocomplete {
     width: 6rem;
 }
 
+/* stylelint-disable-next-line */
 .aa-DetachedSearchButtonIcon {
     cursor: pointer;
 }
