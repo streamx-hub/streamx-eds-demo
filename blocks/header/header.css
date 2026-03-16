@@ -276,8 +276,8 @@ header #autocomplete {
 }
 
 /* stylelint-disable-next-line */
-header .aa-DetachedCancelButton {
-    width: 10rem;
+.aa-DetachedCancelButton {
+    width: 6rem;
 }
 
 /* stylelint-disable-next-line */
