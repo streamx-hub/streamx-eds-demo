@@ -112,7 +112,7 @@
             container: '#autocomplete',
             placeholder: "Search...",
             detachedMediaQuery: "",
-            openOnFocus: true,
+            openOnFocus: false,
             getSources({ query }) {
                 return [
                   {
